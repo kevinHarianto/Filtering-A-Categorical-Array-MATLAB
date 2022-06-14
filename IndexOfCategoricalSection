@@ -1,0 +1,33 @@
+
+            autoLabels(:) = predictedResult;
+
+
+            %prints out the rangeData towards the user demonstrating the file format
+            fprintf('\n next= \n');
+
+
+            %NOTE: We can copy and paste the code below to show all the
+            %labels or the ones we want for the CAN Network
+            idx  = find(autoLabels(:,1) == 'Car');
+
+            tempPoint = removeInvalidPoints(pointCloud);
+
+            %if it detects that a car is within the array it will
+            %display Car and provide the exact location to the vehicle
+            if ismember('Car',autoLabels(idx,:))
+
+                %Note: it will display ALL of the cars within its
+                %vicinity, NaN means not a number, unsure on direct
+                %location in terms of its 2D Location.
+               
+                %Note: There is an issue in the %s where it would display
+                %the memory address and can only be fixed through hard
+                %coded letters to output.
+
+                %Note: Fixed the issue with dispaying the wrong 2D Location
+                %area.
+              fprintf('Refined Search: Car \n %.4f %.4f\n', tempPoint.Location(idx,1),tempPoint.Location(idx,2));
+
+             %fprintf('Search: Car \n %.4f %.4f\n', pointCloud.Location(row, 1), pointCloud.Location(row, 2));
+               
+            end
